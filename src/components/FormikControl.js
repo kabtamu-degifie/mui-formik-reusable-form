@@ -1,6 +1,7 @@
 import React from "react";
 import Checkbox from "./Checkbox";
 import Radio from "./Radio";
+import Rating from "./Rating";
 import Select from "./Select";
 import TextField from "./TextField";
 
@@ -14,6 +15,8 @@ function FormikControl({ control, ...rest }) {
       return <Radio {...rest} />;
     case "checkbox":
       return <Checkbox {...rest} />;
+    case "rating":
+      return <Rating {...rest} />;
     default:
       return null;
   }
