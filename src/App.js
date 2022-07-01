@@ -9,6 +9,7 @@ function App() {
     textField: "",
     select: "",
     radio: "",
+    checkbox: [],
   };
 
   const onSubmit = (values) => {
@@ -19,6 +20,7 @@ function App() {
     textField: Yup.string().required().label("TextField"),
     select: Yup.string().required().label("Required"),
     radio: Yup.string().required().label("Radio"),
+    checkbox: Yup.array().min(1).label("Checkbox"),
   });
 
   const selectOptions = [
@@ -32,6 +34,12 @@ function App() {
     { label: "Option 1", value: "opt11" },
     { label: "Option 2", value: "opt12" },
     { label: "Option 2", value: "opt13" },
+  ];
+
+  const checkboxOptions = [
+    { label: "Option 1", value: "optn1" },
+    { label: "Option 2", value: "optn2" },
+    { label: "Option 2", value: "optn3" },
   ];
 
   return (
@@ -68,6 +76,15 @@ function App() {
                     name="radio"
                     label="Radio"
                     options={radioOptions}
+                  />
+                </Grid>
+
+                <Grid item md={12}>
+                  <FormikControl
+                    control="checkbox"
+                    name="checkbox"
+                    label="Checkbox"
+                    options={checkboxOptions}
                   />
                 </Grid>
                 <Grid item md={12}>

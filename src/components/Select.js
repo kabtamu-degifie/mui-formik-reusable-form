@@ -15,9 +15,9 @@ function Select({ label, options, ...rest }) {
     <FormControl sx={{ minWidth: 235 }} error={!!errorText}>
       <InputLabel>{label}</InputLabel>
       <MuiSelect {...field} label={label} size="small">
-        {options.map((option) => {
+        {options.map((option, index) => {
           return (
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem key={index} value={option.value}>
               {option.label}
             </MenuItem>
           );

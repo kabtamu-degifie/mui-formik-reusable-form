@@ -3,13 +3,13 @@ import {
   FormControlLabel,
   FormHelperText,
   FormLabel,
-  Radio as MuiRadio,
+  Checkbox as MuiCheckbox,
   Stack,
 } from "@mui/material";
 import { Field } from "formik";
 import React from "react";
 
-function Radio({ label, name, options, ...rest }) {
+function Checkbox({ label, name, options, ...rest }) {
   return (
     <Field name={name} {...rest}>
       {({ field, meta }) => {
@@ -17,26 +17,24 @@ function Radio({ label, name, options, ...rest }) {
         return (
           <FormControl error={!!errorText}>
             <FormLabel>{label}</FormLabel>
-
             <Stack direction="row">
               {options.map((option, index) => {
                 return (
                   <FormControlLabel
                     key={index}
+                    label={option.label}
                     control={
-                      <MuiRadio
+                      <MuiCheckbox
                         {...field}
-                        id={option.value}
+                        checked={field.value.includes(option.value)}
                         value={option.value}
-                        checked={field.value === option.value}
                       />
                     }
-                    label={option.label}
                   />
                 );
               })}
             </Stack>
-            <FormHelperText>{errorText}</FormHelperText>
+            <FormHelperText> {errorText} </FormHelperText>
           </FormControl>
         );
       }}
@@ -44,4 +42,4 @@ function Radio({ label, name, options, ...rest }) {
   );
 }
 
-export default Radio;
+export default Checkbox;
