@@ -1,5 +1,5 @@
 import "./App.css";
-import { Box, Button, Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import FormikControl from "./components/FormikControl";
@@ -8,6 +8,7 @@ function App() {
   const initialValues = {
     textField: "",
     select: "",
+    radio: "",
   };
 
   const onSubmit = (values) => {
@@ -17,6 +18,7 @@ function App() {
   const validationSchema = Yup.object({
     textField: Yup.string().required().label("TextField"),
     select: Yup.string().required().label("Required"),
+    radio: Yup.string().required().label("Radio"),
   });
 
   const selectOptions = [
@@ -24,6 +26,12 @@ function App() {
     { label: "Option 1", value: "opt1" },
     { label: "Option 2", value: "opt2" },
     { label: "Option 3", value: "opt3" },
+  ];
+
+  const radioOptions = [
+    { label: "Option 1", value: "opt11" },
+    { label: "Option 2", value: "opt12" },
+    { label: "Option 2", value: "opt13" },
   ];
 
   return (
@@ -51,6 +59,15 @@ function App() {
                     name="select"
                     label="Select"
                     options={selectOptions}
+                  />
+                </Grid>
+
+                <Grid item md={12}>
+                  <FormikControl
+                    control="radio"
+                    name="radio"
+                    label="Radio"
+                    options={radioOptions}
                   />
                 </Grid>
                 <Grid item md={12}>
